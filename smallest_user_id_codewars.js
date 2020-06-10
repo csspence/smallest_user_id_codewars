@@ -10,7 +10,28 @@ Note: The given array of used IDs may be unsorted. For test reasons there may be
 Go on and code some pure awesomeness!
 */
 
-function nextId(ids){
-  //this will be awesome!
-  return 0;
+const nextId = (ids) => {
+  let array = ids.sort(function(a, b) {
+    return a - b;
+  });
+  let lastOne = 0;
+  console.log('here is ids: ' + array);
+  for(let i = 0; i < array.length; i++) {
+    if(array[i] === lastOne) {
+      lastOne++;
+      if(i === array.length - 1) {
+        return lastOne + 1;
+      }
+      continue;
+    }
+    if(array[i] === lastOne - 1) {
+      if(i === array.length - 1) {
+        return lastOne;
+      }
+      continue;
+    }
+    if(array[i] !== lastOne) {
+      return lastOne;
+    }
+  }
 }
